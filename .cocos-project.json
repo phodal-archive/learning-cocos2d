@@ -1,5 +1,6 @@
 {
     "engine_type": "prebuilt", 
     "engine_version": "cocos2d-x-3.4", 
-    "project_type": "cpp"
+    "has_native": true, 
+    "project_type": "lua"
 }
