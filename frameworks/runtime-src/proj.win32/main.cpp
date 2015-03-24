@@ -4,13 +4,13 @@
 
 #if _MSC_VER > 1700
 #pragma comment(lib,"libcocos2d_2013.lib")
-#pragma comment(lib,"libluacocos2d_2013.lib")
+#pragma comment(lib,"libjscocos2d_2013.lib")
 #pragma comment(lib,"libbox2d_2013.lib")
 #pragma comment(lib,"libSpine_2013.lib")
 #pragma comment(lib,"libsimulator_2013.lib")
 #else
 #pragma comment(lib,"libcocos2d_2012.lib")
-#pragma comment(lib,"libluacocos2d_2012.lib")
+#pragma comment(lib,"libjscocos2d_2012.lib")
 #pragma comment(lib,"libbox2d_2012.lib")
 #pragma comment(lib,"libSpine_2012.lib")
 #pragma comment(lib,"libsimulator_2012.lib")

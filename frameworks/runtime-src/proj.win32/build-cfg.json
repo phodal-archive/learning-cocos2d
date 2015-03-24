@@ -9,6 +9,14 @@
             "to": "res"
         },
         {
+            "from": "../../../main.js",
+            "to": ""
+        },
+        {
+            "from": "../../../project.json",
+            "to": ""
+        },
+        {
             "from": "../../../config.json",
             "to": ""
         },
@@ -18,5 +26,9 @@
         }
     ],
     "must_copy_resources": [
-    ]
+        {
+            "from": "../../../script",
+            "to": "script"
+        }
+    ]	
 }

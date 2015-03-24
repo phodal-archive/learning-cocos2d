@@ -1,9 +1,8 @@
 {
     "ndk_module_path" :[
         "${COCOS_FRAMEWORKS}/cocos2d-x-3.4",
-        "${COCOS_FRAMEWORKS}/cocos2d-x-3.4/cocos/",
-        "${COCOS_FRAMEWORKS}/cocos2d-x-3.4/external",
-        "${COCOS_FRAMEWORKS}/cocos2d-x-3.4/cocos/scripting"
+        "${COCOS_FRAMEWORKS}/cocos2d-x-3.4/cocos",
+        "${COCOS_FRAMEWORKS}/cocos2d-x-3.4/external"
     ],
     "copy_resources": [
         {
@@ -13,12 +12,24 @@
         {
             "from": "../../../res",
             "to": "res"
+        },
+        {
+            "from": "../../../main.js",
+            "to": ""
         }
     ],
     "must_copy_resources": [
         {
             "from": "../../../config.json",
             "to": ""
+        },
+        {
+            "from": "../../../project.json",
+            "to": ""
+        },
+        {
+            "from": "../../../script",
+            "to": "script"
         }
     ]
 }

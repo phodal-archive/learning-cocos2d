@@ -1,8 +1,5 @@
 #include "AppDelegate.h"
-#include "CCLuaEngine.h"
 #include "SimpleAudioEngine.h"
-#include "cocos2d.h"
-#include "lua_module_register.h"
 
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_LINUX)
 #include "ide-support/CodeIDESupport.h"
@@ -10,14 +7,13 @@
 
 #if (COCOS2D_DEBUG > 0) && (CC_CODE_IDE_DEBUG_SUPPORT > 0)
 #include "runtime/Runtime.h"
-#include "ide-support/RuntimeLuaImpl.h"
+#include "ide-support/RuntimeJsImpl.h"
+#else
+#include "js_module_register.h"
 #endif
 
-
-using namespace CocosDenshion;
-
 USING_NS_CC;
-using namespace std;
+using namespace CocosDenshion;
 
 AppDelegate::AppDelegate()
 {
@@ -25,8 +21,9 @@ AppDelegate::AppDelegate()
 
 AppDelegate::~AppDelegate()
 {
-    SimpleAudioEngine::end();
-
+	SimpleAudioEngine::end();
+    ScriptEngineManager::destroyInstance();
+    
 #if (COCOS2D_DEBUG > 0) && (CC_CODE_IDE_DEBUG_SUPPORT > 0)
     // NOTE:Please don't remove this call if you want to debug with Cocos Code IDE
     RuntimeEngine::getInstance()->end();
@@ -46,44 +43,60 @@ void AppDelegate::initGLContextAttrs()
 
 bool AppDelegate::applicationDidFinishLaunching()
 {
-    // set default FPS
-    Director::getInstance()->setAnimationInterval(1.0 / 60.0f);
+    // initialize director
+    auto director = Director::getInstance();
 
-    //register custom function
-    //LuaStack* stack = engine->getLuaStack();
-    //register_custom_function(stack->getLuaState());
-    
+    // set FPS. the default value is 1.0/60 if you don't call this
+    director->setAnimationInterval(1.0 / 60);
+
 #if (COCOS2D_DEBUG > 0) && (CC_CODE_IDE_DEBUG_SUPPORT > 0)
-    // NOTE:Please don't remove this call if you want to debug with Cocos Code IDE
-    RuntimeEngine::getInstance()->addRuntime(RuntimeLuaImpl::create(), kRuntimeEngineLua);
-    RuntimeEngine::getInstance()->start();
-    cocos2d::log("iShow!");
-#else
-    auto engine = LuaEngine::getInstance();
-    ScriptEngineManager::getInstance()->setScriptEngine(engine);
-    lua_module_register(engine->getLuaStack()->getLuaState());
-    engine->getLuaStack()->setXXTEAKeyAndSign("2dxLua", strlen("2dxLua"), "XXTEA", strlen("XXTEA"));
-    if (engine->executeScriptFile("src/main.lua"))
-    {
-        return false;
-    }
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    // for getIPAddress
+    extern void setActivityPathForAndroid(const std::string &path);
+    setActivityPathForAndroid("org/cocos2dx/javascript/AppActivity");
 #endif
+
+    auto runtimeEngine = RuntimeEngine::getInstance();
+    auto jsRuntime = RuntimeJsImpl::create();
+    runtimeEngine->addRuntime(jsRuntime, kRuntimeEngineJs);
+    runtimeEngine->start();
     
+    // js need special debug port
+    if (runtimeEngine->getProjectConfig().getDebuggerType() != kCCRuntimeDebuggerNone)
+    {
+        jsRuntime->startWithDebugger();
+    }
+#else
+   js_module_register();
+   ScriptingCore* sc = ScriptingCore::getInstance();
+   sc->start();
+   sc->runScript("script/jsb_boot.js");
+   ScriptEngineProtocol *engine = ScriptingCore::getInstance();
+   ScriptEngineManager::getInstance()->setScriptEngine(engine);
+   ScriptingCore::getInstance()->runScript("main.js");
+#endif
+
     return true;
 }
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
 void AppDelegate::applicationDidEnterBackground()
 {
-    Director::getInstance()->stopAnimation();
-
+    auto director = Director::getInstance();
+    director->stopAnimation();
+    director->getEventDispatcher()->dispatchCustomEvent("game_on_hide");
     SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+    SimpleAudioEngine::getInstance()->pauseAllEffects();    
 }
 
 // this function will be called when the app is active again
 void AppDelegate::applicationWillEnterForeground()
 {
-    Director::getInstance()->startAnimation();
-
+    auto director = Director::getInstance();
+    director->startAnimation();
+    director->getEventDispatcher()->dispatchCustomEvent("game_on_show");
     SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+    SimpleAudioEngine::getInstance()->resumeAllEffects();
 }
+

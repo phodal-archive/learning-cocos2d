@@ -56,11 +56,13 @@
 // Override to allow orientations other than the default portrait orientation.
 // This method is deprecated on ios6
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    
     if (SimpleConfigParser::getInstance()->isLanscape()) {
         return UIInterfaceOrientationIsLandscape( interfaceOrientation );
     }else{
         return UIInterfaceOrientationIsPortrait( interfaceOrientation );
     }
+    
 }
 
 // For ios6, use supportedInterfaceOrientations & shouldAutorotate instead
@@ -89,7 +91,7 @@
 
     if (glview)
     {
-        CCEAGLView *eaglview = (CCEAGLView*) glview->getEAGLView();
+        cocos2d::CCEGLView *eaglview = (cocos2d::CCEGLView*) glview->getEAGLView();
 
         if (eaglview)
         {
