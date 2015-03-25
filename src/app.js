@@ -1,29 +1,27 @@
 
-var HelloWorldLayer = cc.Layer.extend({
-    sprite:null,
+var GameScene = cc.Scene.extend({
+	ctor: function () {
+		this._super();
+	},
+	onEnter:function () {
+		this._super();
+		var layer = new GameLayer();
+		this.addChild(layer);
+	}
+});
+
+var GameLayer = cc.Layer.extend({
     ctor:function () {
-        //////////////////////////////
-        // 1. super init first
         this._super();
-
-        /////////////////////////////
-        // 2. add a menu item with "X" image, which is clicked to quit the program
-        //    you may modify it.
-        // ask the window size
-        var size = cc.winSize;
-
-        var mainscene = ccs.load(res.MainScene_json);
-        this.addChild(mainscene.node);
-
-        return true;
-    }
+    },
+	onEnter: function (){
+		this._super();
+		this.initUI();
+	},
+	initUI: function () {
+		var bg = new cc.Sprite(res.MainBG);
+		bg.anchorX = 0;
+		bg.anchorY = 0;
+		this.addChild(bg, 0);
+	}
 });
-
-var HelloWorldScene = cc.Scene.extend({
-    onEnter:function () {
-        this._super();
-        var layer = new HelloWorldLayer();
-        this.addChild(layer);
-    }
-});
-
