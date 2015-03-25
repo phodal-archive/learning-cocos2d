@@ -11,7 +11,7 @@ var GameScene = cc.Scene.extend({
 });
 
 var GameLayer = cc.Layer.extend({
-	ui: null,
+	ui: {},
     ctor:function () {
         this._super();
     },
@@ -28,28 +28,29 @@ var GameLayer = cc.Layer.extend({
 			anchorY: 0
 		});
 		this.addChild(bg);
-		//
-		//this.ui = new cc.Sprite(res.ui_bg);
-		//this.ui.x = cc.winSize.width / 2;
-		//this.ui.y = cc.winSize.height / 2;
-		//this.ui.scale = 0;
-		//this.ui.attr({
-		//	x: 100,
-		//	y: 200,
-		//	anchorX: 100,
-		//	anchorY: 200
-		//});
-		//this.addChild(this.ui, 100);
 
-		var title_bg = new cc.Sprite(res.title_bg);
-		this.addChild(title_bg);
-		title_bg.x = this.width / 2;
-		title_bg.y = this.height / 2 + 40;
+		this.ui = new cc.Sprite(res.ui_bg);
+		this.ui.x = cc.winSize.width / 2;
+		this.ui.y = cc.winSize.height / 2;
+		this.ui.scale = 0;
+		this.ui.attr({
+			x: 100,
+			y: 200,
+			anchorX: 100,
+			anchorY: 200
+		});
+		this.addChild(this.ui, 100);
 
-		var title = new cc.LabelTTF("Phodal", "Arial", 20);
-		title.x = title_bg.width/2;
-		title.y = title_bg.height/2;
-		title_bg.addChild(title);
+		var button_bg = new cc.Sprite(res.title_bg);
+		this.addChild(button_bg);
+		button_bg.x = this.width / 2;
+		button_bg.y = this.height / 2 + 40;
+
+		var button = new cc.LabelTTF("Phodal", "Arial", 20);
+		button.x = button_bg.width/2;
+		button.y = button_bg.height/2;
+
+		button_bg.addChild(button, 50);
 
 		//var button = new ccui.Button();
 		//button.setTouchEnabled(true);
