@@ -29,34 +29,55 @@ var GameLayer = cc.Layer.extend({
 		});
 		this.addChild(bg);
 
-		this.ui = new cc.Sprite(res.ui_bg);
-		this.ui.x = cc.winSize.width / 2;
-		this.ui.y = cc.winSize.height / 2;
-		this.ui.scale = 0;
-		this.ui.attr({
-			x: 100,
-			y: 200,
-			anchorX: 100,
-			anchorY: 200
-		});
-		this.addChild(this.ui, 100);
+		var size = cc.director.getWinSize();
 
-		var button_bg = new cc.Sprite(res.title_bg);
-		this.addChild(button_bg);
-		button_bg.x = this.width / 2;
-		button_bg.y = this.height / 2 + 40;
 
-		var button = new cc.LabelTTF("Phodal", "Arial", 20);
-		button.x = button_bg.width/2;
-		button.y = button_bg.height/2;
+		var bg = new cc.Sprite(res.background_png);
+		bg.x = size.width/2;
+		bg.y = size.height/2;
+		this.addChild(bg);
 
-		button_bg.addChild(button, 50);
+		// 开始精灵
+		var startSpriteNormal = new cc.Sprite(res.button1);
+        var startSpriteSelected = new cc.Sprite(res.button2);
+        var startMenuItem = new cc.MenuItemSprite(
+	        startSpriteNormal,
+	        startSpriteSelected,
+	        this.menuItemStartCallback, this);
+        startMenuItem.x = 200;
+        startMenuItem.y = size.height - 170;
 
-		//var button = new ccui.Button();
-		//button.setTouchEnabled(true);
-		//button.loadTextures(res.button1, res.button2, "");
-		//this.ui.addChild(button);
-		//button.x = this.ui.width / 2;
-		//button.y = this.ui.height / 2 - 30;
+		// 设置图片菜单
+		var settingMenuItem = new cc.MenuItemImage(
+			res.button1,
+			res.button2,
+			this.menuItemSettingCallback, this);
+        settingMenuItem.x = 480;
+		settingMenuItem.y = size.height - 250;
+
+
+		// 帮助图片菜单
+		var helpMenuItem = new cc.MenuItemImage(
+			res.button1,
+			res.button2,
+			this.menuItemHelpCallback, this);
+        helpMenuItem.x = 600;
+		helpMenuItem.y = size.height - 360;
+
+
+		var mu = new cc.Menu(startMenuItem, settingMenuItem, helpMenuItem);
+        mu.x = 0;
+		mu.y = 0;
+		this.addChild(mu);
+	},
+	
+	menuItemStartCallback:function (sender) {
+		cc.log("menuItemStartCallback!");
+	},
+	menuItemSettingCallback:function (sender) {
+		cc.log("menuItemSettingCallback!");
+	},
+	menuItemHelpCallback:function (sender) {
+		cc.log("menuItemHelpCallback!");
 	}
 });
