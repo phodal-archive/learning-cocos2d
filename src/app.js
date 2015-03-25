@@ -76,12 +76,11 @@ var GameLayer = cc.Layer.extend({
 		this.addChild(mu);
 	},
 
-	menuItemStartCallback:function (sender) {
-		this.gameController.startGame(sender);
-		cc.log("menuItemStartCallback!");
+	menuItemStartCallback:function () {
+		this.gameController.startGame(this);
 	},
 	menuItemSettingCallback:function (sender) {
-		cc.log("menuItemSettingCallback!");
+		this.gameController.settingGame(this);
 	},
 	menuItemHelpCallback:function (sender) {
 		cc.log("menuItemHelpCallback!");

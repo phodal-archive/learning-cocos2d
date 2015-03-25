@@ -3,6 +3,7 @@ var res = {
 	button1: "res/button1.png",
 	button2: "res/button2.png",
 	title_bg: "res/title_bg.png",
+	game_ui: "res/game_ui.jpg",
 	ui_bg: "res/ui_bg.png"
 };
 
