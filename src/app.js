@@ -12,12 +12,17 @@ var GameScene = cc.Scene.extend({
 
 var GameLayer = cc.Layer.extend({
 	ui: {},
+	gameController: null,
     ctor:function () {
         this._super();
     },
+	initFunc: function () {
+		this.gameController = new GameController(this);
+	},
 	onEnter: function (){
 		this._super();
 		this.initUI();
+		this.initFunc();
 	},
 	initUI: function () {
 		var bg = new cc.Sprite(res.MainBG);
@@ -70,8 +75,9 @@ var GameLayer = cc.Layer.extend({
 		mu.y = 0;
 		this.addChild(mu);
 	},
-	
+
 	menuItemStartCallback:function (sender) {
+		this.gameController.startGame(sender);
 		cc.log("menuItemStartCallback!");
 	},
 	menuItemSettingCallback:function (sender) {

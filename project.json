@@ -8,6 +8,7 @@
     "engineDir":"frameworks/cocos2d-html5",
     "modules" : ["cocos2d", "cocostudio", "ccui"],
     "jsList" : [
+        "src/controller/GameController.js",
         "src/resource.js",
         "src/app.js"
     ]
