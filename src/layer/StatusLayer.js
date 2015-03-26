@@ -8,14 +8,17 @@ var StatusLayer = cc.Layer.extend({
 		this._super();
 
 		this.labelCoin = new cc.LabelTTF("Coins:0", "Helvetica", 20);
-		//this.labelCoin.setColor(cc.c3(0,0,0));//black color
+		this.labelCoin.fillStyle =  cc.color(0,255,0);
 		this.labelCoin.x = 70;
 		this.labelCoin.y = cc.winSize.height -20;
 
 		this.addChild(this.labelCoin);
 
-		//this.labelMeter = cc.LabelTTF("0M", "Helvetica", 20);
-		//this.labelMeter.setPosition(cc.p(cc.winSize.width - 70, cc.winSize.height - 20));
-		//this.addChild(this.labelMeter);
+		this.labelMeter = new cc.LabelTTF("0M", "Helvetica", 20);
+		this.labelMeter.fillStyle =  cc.color(0,255,0);
+		this.labelMeter.x = cc.winSize.width - 70;
+		this.labelMeter.y = cc.winSize.height - 20;
+
+		this.addChild(this.labelMeter);
 	}
 });

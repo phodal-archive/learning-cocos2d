@@ -49,6 +49,6 @@ out/
 *.gtgz
 
 tools/
-frameworks/
+frameworks/runtime-src
 script/
 runtime
