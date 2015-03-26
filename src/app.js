@@ -12,6 +12,7 @@ var GameScene = cc.Scene.extend({
 
 var GameLayer = cc.Layer.extend({
 	ui: {},
+	number: 1,
 	gameController: null,
     ctor:function () {
         this._super();
@@ -34,8 +35,13 @@ var GameLayer = cc.Layer.extend({
 		});
 		this.addChild(bg);
 
-		var size = cc.director.getWinSize();
+		var boxFrame = cc.spriteFrameCache.getSpriteFrame('greenhood_walk_back_left_' + this.number + '.png');
+		var sprite = cc.Sprite.create(boxFrame);
+		sprite.setPosition(cc.p(200, 300));
+		console.log(sprite);
+		this.addChild(sprite,100);
 
+		var size = cc.director.getWinSize();
 
 		var bg = new cc.Sprite(res.background);
 		bg.x = size.width/2;
@@ -75,7 +81,18 @@ var GameLayer = cc.Layer.extend({
 		mu.y = 0;
 		this.addChild(mu);
 	},
+	updateNumber: function(num){
+		this.number = num;
+		var text = "";
+		if(this.number > 0){
+			text = this.number.toString();
+		}
+		this.label.setString(text);
 
+		var frameName = "greenhood_walk_back_left_" + this.number.toString() + ".png";
+		var frameSprite = cc.spriteFrameCache.getSpriteFrame(frameName);
+		this.setSpriteFrame(frameSprite)
+	},
 	menuItemStartCallback:function () {
 		this.gameController.startGame(this);
 	},
