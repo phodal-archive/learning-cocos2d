@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-up" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="7">
  <tileset firstgid="1" name="magecity_0" tilewidth="32" tileheight="32">
-  <image source="../../../../Game/magecity_0.png" trans="ff00ff" width="256" height="1450"/>
+  <image source="magecity_0.png" trans="ff00ff" width="256" height="1450"/>
  </tileset>
  <layer name="ground" width="30" height="20">
   <data encoding="base64" compression="zlib">

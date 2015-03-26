@@ -5,6 +5,8 @@ var res = {
 	background: "res/background.jpg",
 	title_bg: "res/title_bg.png",
 	game_ui: "res/game_ui.jpg",
+	map_png: "res/magecity_0.png",
+	map_tmx: "res/map.tmx",
 	ui_bg: "res/ui_bg.png"
 };
 

@@ -17,5 +17,8 @@ var StatusScene = cc.Scene.extend({
 			anchorY: 0
 		});
 		this.addChild(bg);
+
+		this.map00 = cc.TMXTiledMap.create(res.map_tmx);
+		this.addChild(this.map00);
 	}
 });
