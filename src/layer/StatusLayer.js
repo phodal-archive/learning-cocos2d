@@ -18,7 +18,6 @@ var StatusLayer = cc.Layer.extend({
 		this.labelMeter.fillStyle =  cc.color(0,255,0);
 		this.labelMeter.x = cc.winSize.width - 70;
 		this.labelMeter.y = cc.winSize.height - 20;
-
 		this.addChild(this.labelMeter);
 	}
 });

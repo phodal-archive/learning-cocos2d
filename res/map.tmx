@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-up" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="7">
+ <tileset firstgid="1" name="magecity_0" tilewidth="32" tileheight="32">
+  <image source="../../../../Game/magecity_0.png" trans="ff00ff" width="256" height="1450"/>
+ </tileset>
+ <layer name="ground" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztlTsKwkAURTOtn8pP4wfUSq00IGhWoMFCrTTrsBJLFxayGZdg6QUzZhxnnLxH0MYLh4Hw7jsMDCTxvp8YJH/vM0uwAiFxr6tn887ScwO2YEf0unqu++7BAUREr6tn8h7BWjwIhbkXiWwmsszIXEEZMxVQTTF5z17mtO1ci1dsOaXeGmbqoAGaFu9F8druq3s/ccN8C2cbdEBX8ZYKQHW5Zov0Uvi1dwKmBHxtD6XvK945WBAINC+lH3jv7zlPz/R25DdXV4b7X7B586ZILyUxwymjejnpMxho3h5jx4jBWPMOGTvuDBhMUA==
+  </data>
+ </layer>
+ <layer name="Background" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzllDkOwjAQReOWWwAVUEEqSAkdqSLgJiwSAtKwXCvKVaBkOQLfIhbGMSQzoIDEl55sK5n/GsuxQ09fPOIL+3++8U2dI+zjD3ip+WXvIaFor3J/w2uG4pX3KACjZA2e3KsxmIApmOXwZyUQabfNuwBLsAJhdu3LzJ27z9f8Nu8abMAW7HL2d9HVE7dV38t1kDDUUN5SwfyrtwlaBFyjhzLvat426BDwDC9l3nPS9znPnIrulTkRZjnv1R4cLd4LoYP7Tp4tXkoixozKO16ZCoOq4S0zOuoMGoa3xui4AvOXU2Y=
+  </data>
+ </layer>
+ <layer name="background-green" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJy1lb9KBDEQhyedaGVpp97uuXooq4KgVyoIglioz6KFoGChr+Cj6FV64L8DtbS0ULAQFWwEG3/jbrjckOQSYQc+Jslm5rvsQbZNvXFF8XEKLstazTVoWfZ+g3PQFuv3//Byn7uyVvNg6W3utz17sdDPe2GBe28pom3VzUw/b2hwn1sLptd0+7wxcePwdsh/3gTMgBTUwRP4iHSnDmyhvWNgGqzit2TIo8g7yLuBTq4ft1Dr450EU2ADvhw5R95HPgj06npJA+x5vND8vdd1DD6RJ5CPkI8Dva44BMvotaKKrMfay+91kKpjQPTX3qwCr+nisTnX3ryi82qfy8v/5xyFMy/6z0bWau9CyVIAw6ApvIvlekh90/A+gkQV55b7hsR8hIowvVSuZ8pfu6YKtPcVbKouiQHPU+PZs8X7Dt6ot67uGGsvfzvPImkJb2wPrnfd6T46whvbg+u/qHufnpD9npXrNeGV97Otj1z7Ifvd6qMhvK772ccvvH6hJg==
+  </data>
+ </layer>
+ <layer name="top" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYGBgOE4AI4MTDKQDH0YIRgfIdhwA4vNomBJ7w4D2hTAi6BAk+5HtJWQuSJ4DiokB4kAsAcS6QPv0gNgcSQ6XvU+BeB8Q70fCIHk+IOYn0l55IFYAYlOgnWZoYY0cpheA2AxqJwgfw+IuASgmBsD8CaORgTIOPR+A+BwWd4miqVNBYm9AotUYEP7E5l98wBCoVpUBgUFmySLJ+wHlFZH4O9BofEAEj5wl0FwlIO0OpdHDBuR3TSLswAZk8Mg5Au3TAtL+UNoJKaySGVD9Ti+QPQB2gkDxANk7CkgH3HSyg1h76OGeUTD8AADBPDYm
+  </data>
+ </layer>
+ <layer name="Tree" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt1U0KglAUhuFrA5vZWlqcJVgZ2B9YGqTZahrqemxWo95hUNCFg57J/eCZHe7rTGP+r/0w1O5K3eZH18dYoRtg0nO3z0097S8wJsQMc0QDdpdYIcFa+FaMheXtFjvscRB2U2wsb0/IUeAs7GY4Wt5WuKLGTdi9oBS+4ebm9r0OD4XuEy+Frse/b4Q3tMselA==
+  </data>
+ </layer>
+</map>
