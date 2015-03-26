@@ -37,7 +37,7 @@ var GameLayer = cc.Layer.extend({
 		var size = cc.director.getWinSize();
 
 
-		var bg = new cc.Sprite(res.background_png);
+		var bg = new cc.Sprite(res.background);
 		bg.x = size.width/2;
 		bg.y = size.height/2;
 		this.addChild(bg);
