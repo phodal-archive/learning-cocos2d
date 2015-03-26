@@ -7,10 +7,9 @@ GameController.prototype = {
 
 	},
 	startUI: function(sender){
-		cc.director.runScene(new StatusScene())
+		cc.director.pushScene(new StatusScene())
 	},
 	cleanScene: function (sender) {
-		sender.removeAllChildren();
 	},
 	settingGame: function(sender) {
 		this.startUI(sender);
