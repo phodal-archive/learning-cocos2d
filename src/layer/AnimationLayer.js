@@ -2,15 +2,21 @@ var AnimationLayer = cc.Layer.extend({
 	spriteSheet: null,
 	runningAction: null,
 	sprite: null,
+	space:null,
+	body:null,
+	shape:null,
 
-	ctor:function () {
+	ctor:function (space) {
 		this._super();
+		this.space = space;
+		this._debugNode = cc.PhysicsDebugNode.create(this.space);
+
+		this.addChild(this._debugNode, 10);
 		this.init();
 	},
 	init:function () {
 		this._super();
 
-		// create sprite sheet
 		cc.spriteFrameCache.addSpriteFrames(res.walk_plist);
 		this.spriteSheet = new cc.SpriteBatchNode(res.walk_png);
 		this.addChild(this.spriteSheet);
@@ -25,12 +31,22 @@ var AnimationLayer = cc.Layer.extend({
 
 		var animation = new cc.Animation(animFrames, 0.1);
 		this.runningAction = new cc.RepeatForever(new cc.Animate(animation));
-		this.sprite = new cc.Sprite("#greenhood_walk_back_left_1.png");
-		this.sprite.attr({
-			x: 480,
-			y: 30
-		});
+
+		//create runner through physic engine
+		this.sprite = new cc.PhysicsSprite("#greenhood_walk_back_left_1.png");
+		var contentSize = this.sprite.getContentSize();
+		// init body
+		this.body = new cp.Body(1, cp.momentForBox(1, contentSize.width, contentSize.height));
+		this.body.p = cc.p(g_runnerStartX, g_groundHight + contentSize.height / 2);
+		this.body.applyImpulse(cp.v(0, 0), cp.v(0, 0));//run speed
+		this.space.addBody(this.body);
+		//init shape
+		this.shape = new cp.BoxShape(this.body, contentSize.width - 14, contentSize.height);
+		this.space.addShape(this.shape);
+
+		this.sprite.setBody(this.body);
 		this.sprite.runAction(this.runningAction);
+
 		this.spriteSheet.addChild(this.sprite);
 	}
 });
