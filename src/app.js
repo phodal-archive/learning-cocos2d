@@ -29,27 +29,34 @@ var GameLayer = cc.Layer.extend({
 		this.initFunc();
 	},
 	initUI: function () {
-		var bg = new cc.Sprite(res.MainBG);
-		bg.attr({
-			x: 0,
-			y: 0,
-			anchorX: 0,
-			anchorY: 0
-		});
-		this.addChild(bg);
-
-		var boxFrame = cc.spriteFrameCache.getSpriteFrame('greenhood_walk_back_left_' + this.number + '.png');
-		var sprite = cc.Sprite.create(boxFrame);
-		sprite.setPosition(cc.p(200, 300));
-		console.log(sprite);
-		this.addChild(sprite,100);
-
 		var size = cc.director.getWinSize();
 
 		var bg = new cc.Sprite(res.game_ui);
 		bg.x = size.width/2;
 		bg.y = size.height/2;
 		this.addChild(bg);
+
+		// create sprite sheet
+		cc.spriteFrameCache.addSpriteFrames(res.runner_plist);
+		this.spriteSheet = new cc.SpriteBatchNode(res.runner_png);
+		this.addChild(this.spriteSheet);
+
+
+		// init runningAction
+		var animFrames = [];
+		for (var i = 0; i < 8; i++) {
+			var str = "runner" + i + ".png";
+			var frame = cc.spriteFrameCache.getSpriteFrame(str);
+			animFrames.push(frame);
+		}
+
+		var animation = new cc.Animation(animFrames, 0.1);
+		this.runningAction = new cc.RepeatForever(new cc.Animate(animation));
+		this.sprite = new cc.Sprite("#runner0.png");
+		this.sprite.attr({x:80, y:185});
+		this.sprite.runAction(this.runningAction);
+		this.spriteSheet.addChild(this.sprite);
+
 
 		// 开始精灵
 		var startSpriteNormal = new cc.Sprite(res.button1);

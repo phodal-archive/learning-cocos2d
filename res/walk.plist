@@ -114,7 +114,7 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>walk.png</string>
+            <string>greenhood_walk_back_left_1.png</string>
             <key>size</key>
             <string>{240,64}</string>
             <key>smartupdate</key>

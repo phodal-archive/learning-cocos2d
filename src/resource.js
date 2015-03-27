@@ -9,7 +9,9 @@ var res = {
 	map_tmx: "res/map.tmx",
 	walk_png  : "res/walk.png",
 	walk_plist : "res/walk.plist",
-	ui_bg: "res/ui_bg.png"
+	ui_bg: "res/ui_bg.png",
+	runner_png  : "res/running.png",
+	runner_plist : "res/running.plist"
 };
 
 var g_resources = [];
