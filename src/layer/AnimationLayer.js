@@ -10,12 +10,10 @@ var AnimationLayer = cc.Layer.extend({
 	init:function () {
 		this._super();
 
-
 		// create sprite sheet
 		cc.spriteFrameCache.addSpriteFrames(res.walk_plist);
 		this.spriteSheet = new cc.SpriteBatchNode(res.walk_png);
 		this.addChild(this.spriteSheet);
-
 
 		// init runningAction
 		var animFrames = [];

@@ -6,16 +6,11 @@ GameController.prototype = {
 	init: function (layer) {
 
 	},
-	startUI: function(sender){
-		cc.director.pushScene(new StatusScene())
-	},
-	cleanScene: function (sender) {
-	},
 	settingGame: function(sender) {
-		this.startUI(sender);
+		console.log('settings');
 	},
 	startGame: function(sender) {
-		this.cleanScene(sender);
-		this.startUI(sender);
+		cc.log("==start game clicked");
+		cc.director.runScene(new GameScene());
 	}
 };
