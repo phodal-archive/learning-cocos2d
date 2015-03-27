@@ -11,6 +11,7 @@
         "src/controller/GameController.js",
         "src/layer/StatusLayer.js",
         "src/scene/StatusScene.js",
+        "src/scene/AnimationScene.js",
         "src/resource.js",
         "src/app.js"
     ]

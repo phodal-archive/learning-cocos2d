@@ -20,5 +20,6 @@ var StatusScene = cc.Scene.extend({
 
 		this.map00 = cc.TMXTiledMap.create(res.map_tmx);
 		this.addChild(this.map00);
+		this.addChild(new AnimationLayer())
 	}
 });
