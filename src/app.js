@@ -14,6 +14,9 @@ var GameLayer = cc.Layer.extend({
 	ui: {},
 	number: 1,
 	gameController: null,
+	spriteSheet:null,
+	runningAction:null,
+	sprite:null,
     ctor:function () {
         this._super();
     },
@@ -43,7 +46,7 @@ var GameLayer = cc.Layer.extend({
 
 		var size = cc.director.getWinSize();
 
-		var bg = new cc.Sprite(res.background);
+		var bg = new cc.Sprite(res.game_ui);
 		bg.x = size.width/2;
 		bg.y = size.height/2;
 		this.addChild(bg);
@@ -80,18 +83,6 @@ var GameLayer = cc.Layer.extend({
         mu.x = 0;
 		mu.y = 0;
 		this.addChild(mu);
-	},
-	updateNumber: function(num){
-		this.number = num;
-		var text = "";
-		if(this.number > 0){
-			text = this.number.toString();
-		}
-		this.label.setString(text);
-
-		var frameName = "greenhood_walk_back_left_" + this.number.toString() + ".png";
-		var frameSprite = cc.spriteFrameCache.getSpriteFrame(frameName);
-		this.setSpriteFrame(frameSprite)
 	},
 	menuItemStartCallback:function () {
 		this.gameController.startGame(this);
