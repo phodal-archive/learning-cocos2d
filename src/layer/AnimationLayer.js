@@ -2,11 +2,11 @@ var AnimationLayer = cc.Layer.extend({
 	spriteSheet: null,
 	runningAction: null,
 	sprite: null,
-	space:null,
-	body:null,
-	shape:null,
+	space: null,
+	body: null,
+	shape: null,
 
-	ctor:function (space) {
+	ctor: function (space) {
 		this._super();
 		this.space = space;
 		this.init();
@@ -16,7 +16,7 @@ var AnimationLayer = cc.Layer.extend({
 
 		this.addChild(this._debugNode, 10);
 	},
-	init:function () {
+	init: function () {
 		this._super();
 
 		cc.spriteFrameCache.addSpriteFrames(res.walk_plist);
@@ -39,8 +39,8 @@ var AnimationLayer = cc.Layer.extend({
 		var contentSize = this.sprite.getContentSize();
 		// init body
 		this.body = new cp.Body(1, cp.momentForBox(1, contentSize.width, contentSize.height));
-		this.body.p = cc.p(g_runnerStartX, g_groundHight + contentSize.height / 2);
-		this.body.applyImpulse(cp.v(-150, 0), cp.v(0, 0));//run speed
+		this.body.p = cc.p(g_runnerStartX, g_runnerStartY);
+		this.body.applyImpulse(cp.v(-10, 0), cp.v(0, 0));//run speed
 		this.space.addBody(this.body);
 		//init shape
 		this.shape = new cp.BoxShape(this.body, contentSize.width - 14, contentSize.height);
@@ -53,7 +53,10 @@ var AnimationLayer = cc.Layer.extend({
 
 		this.scheduleUpdate();
 	},
-	getEyeX:function () {
+	getEyeX: function () {
 		return this.sprite.getPositionX() - g_runnerStartX;
+	},
+	getEyeY: function () {
+		return this.sprite.getPositionY();
 	}
 });

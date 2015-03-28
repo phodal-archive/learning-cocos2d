@@ -1,5 +1,6 @@
-var g_groundHight = 54;
-var g_runnerStartX = 480;
+var g_groundHeight = 54;
+var g_runnerStartX = 48;
+var g_runnerStartY = 48;
 
 if(typeof TagOfLayer == "undefined") {
 	var TagOfLayer = {};
@@ -8,3 +9,10 @@ if(typeof TagOfLayer == "undefined") {
 	TagOfLayer.Status = 2;
 };
 
+// collision type for chipmunk
+if(typeof SpriteTag == "undefined") {
+	var SpriteTag = {};
+	SpriteTag.runner = 0;
+	SpriteTag.coin = 1;
+	SpriteTag.rock = 2;
+};

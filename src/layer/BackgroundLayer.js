@@ -3,13 +3,23 @@ var BackgroundLayer = cc.Layer.extend({
 	map01:null,
 	mapWidth:0,
 	mapIndex:0,
-	ctor:function () {
+	space:null,
+	spriteSheet:null,
+	objects:[],
+
+	ctor:function (space) {
 		this._super();
+		this.objects = [];
+		this.space = space;
 		this.init();
 	},
-
 	init:function () {
 		this.map00 = cc.TMXTiledMap.create(res.map_tmx);
+		var objGroup = this.map00.getObjectGroup('objects');
+		var obj = objGroup.getObject('role');
+		g_runnerStartX = obj.x;
+		g_runnerStartY = obj.y;
+
 		this.addChild(this.map00);
 
 		this.mapWidth = this.map00.getContentSize().width;

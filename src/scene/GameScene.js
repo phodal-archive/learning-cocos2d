@@ -14,8 +14,8 @@ var GameScene = cc.Scene.extend({
 
 		// 3. set up Walls
 		var wallBottom = new cp.SegmentShape(this.space.staticBody,
-			cp.v(0, g_groundHight),// start point
-			cp.v(4294967295, g_groundHight),// MAX INT:4294967295
+			cp.v(0, g_groundHeight),// start point
+			cp.v(4294967295, g_groundHeight),// MAX INT:4294967295
 			0);// thickness of wall
 		this.space.addStaticShape(wallBottom);
 	},
@@ -25,7 +25,7 @@ var GameScene = cc.Scene.extend({
 		this.initPhysics();
 
 		this.gameLayer = new cc.Layer();
-		this.gameLayer.addChild(new BackgroundLayer(), 0, TagOfLayer.background);
+		this.gameLayer.addChild(new BackgroundLayer(this.space), 0, TagOfLayer.background);
 		this.gameLayer.addChild(new AnimationLayer(this.space), 0, TagOfLayer.Animation);
 		this.addChild(this.gameLayer);
 		this.addChild(new StatusLayer(), 0, TagOfLayer.Status);

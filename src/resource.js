@@ -11,7 +11,9 @@ var res = {
 	walk_plist : "res/walk.plist",
 	ui_bg: "res/ui_bg.png",
 	runner_png  : "res/running.png",
-	runner_plist : "res/running.plist"
+	runner_plist : "res/running.plist",
+	background_png :"res/background.png",
+	background_plist : "res/background.plist"
 };
 
 var g_resources = [];
