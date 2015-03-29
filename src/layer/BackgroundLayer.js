@@ -27,6 +27,7 @@ var BackgroundLayer = cc.Layer.extend({
 				var tileCoord = new cc.Point(i, j);
 				var gid = collidableLayer.getTileGIDAt(tileCoord);
 				if(gid) {
+					var properties = map.getPropertiesForGID(gid);
 					var tileXPositon = i * tileWidth;
 					var tileYPosition = (mapHeight * tileHeight) - ((j+1) * tileHeight);
 					var react = cc.rect(tileXPositon, tileYPosition, tileWidth, tileHeight);
@@ -50,26 +51,20 @@ var BackgroundLayer = cc.Layer.extend({
 		this.scheduleUpdate();
 	},
 	checkAndReload:function (eyeX) {
-		var newMapIndex = parseInt(eyeX / this.mapWidth);
-		if (this.mapIndex == newMapIndex) {
-			return false;
+		if(-eyeX < this.mapWidth){
+			this.map00.setPositionX(eyeX);
 		}
-
-		if (0 == newMapIndex % 2) {
-			//this.map01.setPositionX(this.mapWidth * (newMapIndex + 1));
-		} else {
-			// change mapFirst
-			this.map00.setPositionX(this.mapWidth * (newMapIndex + 1));
-		}
-		this.mapIndex = newMapIndex;
-
 		return true;
 	},
 
+	isCollision: function (position) {
+	},
 	update:function () {
 		var animationLayer = this.getParent().getChildByTag(TagOfLayer.Animation);
 		var eyeX = animationLayer.getEyeX();
+		var eyeY = animationLayer.getEyeY();
+		animationLayer.setPosition(1, 30);
+		//this.isCollision(new cc.p(eyeX, eyeY));
 		this.checkAndReload(eyeX);
-
 	}
 });
