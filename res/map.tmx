@@ -36,12 +36,12 @@
    eJzt1U0KglAUhuFrA5vZWlqcJVgZ2B9YGqTZahrqemxWo95hUNCFg57J/eCZHe7rTGP+r/0w1O5K3eZH18dYoRtg0nO3z0097S8wJsQMc0QDdpdYIcFa+FaMheXtFjvscRB2U2wsb0/IUeAs7GY4Wt5WuKLGTdi9oBS+4ebm9r0OD4XuEy+Frse/b4Q3tMselA==
   </data>
  </layer>
- <layer name="collidable" width="30" height="20" opacity="0">
+ <layer name="collidable" width="30" height="20" opacity="0.25">
   <data encoding="base64" compression="zlib">
    eJzLZGRgyCQRowNS9ZOLaWUvsWaO2ktbe6kdvzAziDGTmn7FZy86m1r+xQUI2UtNOwm5hVhAqvnE2ktIDa39RSqgZV6jFaaGvaTqpVbY0RsMdDiP2kt7ewE/hK0V
   </data>
  </layer>
- <objectgroup name="objects">
+ <objectgroup name="objects" opacity="0.8">
   <object id="69" name="role" x="448" y="347" width="30" height="31"/>
   <object id="71" x="497" y="595" width="2"/>
  </objectgroup>
