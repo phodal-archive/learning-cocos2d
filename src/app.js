@@ -14,6 +14,7 @@ var MainLayer = cc.Layer.extend({
 	ui: {},
 	number: 1,
 	gameController: null,
+	helpController: null,
 	spriteSheet:null,
 	runningAction:null,
 	sprite:null,
@@ -22,6 +23,7 @@ var MainLayer = cc.Layer.extend({
     },
 	initFunc: function () {
 		this.gameController = new GameController(this);
+		this.helpController = new HelpController(this);
 	},
 	onEnter: function (){
 		this._super();
@@ -68,13 +70,12 @@ var MainLayer = cc.Layer.extend({
 		this.addChild(mu);
 	},
 	menuItemStartCallback:function () {
-		console.log('start game');
 		this.gameController.startGame(this);
 	},
 	menuItemSettingCallback:function (sender) {
 		this.gameController.settingGame(this);
 	},
 	menuItemHelpCallback:function (sender) {
-		cc.log("menuItemHelpCallback!");
+		this.helpController.help();
 	}
 });

@@ -14,12 +14,14 @@
   ],
   "jsList": [
     "src/controller/GameController.js",
+    "src/controller/HelpController.js",
 
     "src/layer/StatusLayer.js",
     "src/layer/BackgroundLayer.js",
     "src/layer/AnimationLayer.js",
 
     "src/scene/GameScene.js",
+    "src/scene/HelpScene.js",
 
     "src/resource.js",
     "src/app.js",
