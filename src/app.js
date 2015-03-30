@@ -37,19 +37,17 @@ var MainLayer = cc.Layer.extend({
 		this.addChild(bg);
 
 		// 开始精灵
-		var startSpriteNormal = new cc.Sprite(res.start_button);
-        var startSpriteSelected = new cc.Sprite(res.start_button2);
-        var startMenuItem = new cc.MenuItemSprite(
-	        startSpriteNormal,
-	        startSpriteSelected,
+		var startMenuItem = new cc.MenuItemImage(
+	        res.start_button,
+	        res.start_button2,
 	        this.menuItemStartCallback, this);
         startMenuItem.x = 200;
         startMenuItem.y = size.height - 170;
 
 		// 设置图片菜单
 		var settingMenuItem = new cc.MenuItemImage(
-			res.button1,
-			res.button2,
+			res.settings_button,
+			res.settings_button2,
 			this.menuItemSettingCallback, this);
         settingMenuItem.x = 480;
 		settingMenuItem.y = size.height - 250;

@@ -3,6 +3,8 @@ var res = {
 	button1: "res/button1.png",
 	start_button: "res/start_1.png",
 	start_button2: "res/start_2.png",
+	settings_button: "res/settings_1.png",
+	settings_button2: "res/settings_2.png",
 	button2: "res/button2.png",
 	background: "res/background.jpg",
 	title_bg: "res/title_bg.png",
