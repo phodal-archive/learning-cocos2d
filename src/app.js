@@ -37,8 +37,8 @@ var MainLayer = cc.Layer.extend({
 		this.addChild(bg);
 
 		// 开始精灵
-		var startSpriteNormal = new cc.Sprite(res.button1);
-        var startSpriteSelected = new cc.Sprite(res.button2);
+		var startSpriteNormal = new cc.Sprite(res.start_button);
+        var startSpriteSelected = new cc.Sprite(res.start_button2);
         var startMenuItem = new cc.MenuItemSprite(
 	        startSpriteNormal,
 	        startSpriteSelected,
