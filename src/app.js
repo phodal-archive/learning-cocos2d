@@ -36,28 +36,6 @@ var MainLayer = cc.Layer.extend({
 		bg.y = size.height/2;
 		this.addChild(bg);
 
-		// create sprite sheet
-		cc.spriteFrameCache.addSpriteFrames(res.runner_plist);
-		this.spriteSheet = new cc.SpriteBatchNode(res.runner_png);
-		this.addChild(this.spriteSheet);
-
-
-		// init runningAction
-		var animFrames = [];
-		for (var i = 0; i < 8; i++) {
-			var str = "runner" + i + ".png";
-			var frame = cc.spriteFrameCache.getSpriteFrame(str);
-			animFrames.push(frame);
-		}
-
-		var animation = new cc.Animation(animFrames, 0.1);
-		this.runningAction = new cc.RepeatForever(new cc.Animate(animation));
-		this.sprite = new cc.Sprite("#runner0.png");
-		this.sprite.attr({x:80, y:185});
-		this.sprite.runAction(this.runningAction);
-		this.spriteSheet.addChild(this.sprite);
-
-
 		// 开始精灵
 		var startSpriteNormal = new cc.Sprite(res.button1);
         var startSpriteSelected = new cc.Sprite(res.button2);
