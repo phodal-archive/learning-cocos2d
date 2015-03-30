@@ -54,7 +54,6 @@ var AnimationLayer = cc.Layer.extend({
 		this.scheduleUpdate();
 	},
 	getEyeX: function () {
-		this.sprite.setPosition( 100, 400);
 		return this.sprite.getPositionX() - g_runnerStartX;
 	},
 	getEyeY: function () {
