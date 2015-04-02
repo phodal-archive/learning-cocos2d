@@ -1,6 +1,6 @@
 var g_groundHeight = 54;
-var g_runnerStartX = 248;
-var g_runnerStartY = 248;
+var g_runnerStartX = 472;
+var g_runnerStartY = 100;
 
 if(typeof TagOfLayer == "undefined") {
 	var TagOfLayer = {};

@@ -3,8 +3,6 @@ var BackgroundLayer = cc.Layer.extend({
 	map01:null,
 	mapWidth:0,
 	mapIndex:0,
-	initPosition: 340,
-	initX: 0,
 	space:null,
 	spriteSheet:null,
 	objects:[],
@@ -63,15 +61,14 @@ var BackgroundLayer = cc.Layer.extend({
 		return false;
 	},
 	isCollision: function (object) {
-		var newPosition = new cc.p(object.x + 1, object.y);
+		var newPosition = new cc.p(object.x, object.y + 1);
 		var newRectangle = cc.rect(object.x - 72, object.y, 32, 32);
 		if (this.isCollisionInArray(newRectangle, this.obstacles)) {
 			console.log(newPosition);
 			object.setPosition(newPosition);
 		}
 	},
-	update:function () {
-		this.initX = this.initX + this.initPosition + 1;
+	update:function (dt) {
 		var animationLayer = this.getParent().getChildByTag(TagOfLayer.Animation);
 		this.isCollision(animationLayer.sprite);
 		this.checkAndReload(animationLayer.x);
