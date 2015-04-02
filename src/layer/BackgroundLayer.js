@@ -26,8 +26,7 @@ var BackgroundLayer = cc.Layer.extend({
 		var i, j;
 		for (i = 0; i < mapWidth; i++){
 			for (j = 0; j < mapHeight; j++){
-				var tileCoord = new cc.Point(i, j);
-				var gid = collidableLayer.getTileGIDAt(tileCoord);
+				var gid = collidableLayer.getTileGIDAt(i, j);
 				if(gid) {
 					var properties = map.getPropertiesForGID(gid);
 					var tileXPositon = i * tileWidth;
