@@ -28,7 +28,6 @@ var BackgroundLayer = cc.Layer.extend({
 			for (j = 0; j < mapHeight; j++){
 				var gid = collidableLayer.getTileGIDAt(i, j);
 				if(gid) {
-					var properties = map.getPropertiesForGID(gid);
 					var tileXPositon = i * tileWidth;
 					var tileYPosition = (mapHeight * tileHeight) - ((j+1) * tileHeight);
 					var react = cc.rect(tileXPositon, tileYPosition, tileWidth, tileHeight);
@@ -65,15 +64,16 @@ var BackgroundLayer = cc.Layer.extend({
 	},
 	isCollision: function (object) {
 		var newPosition = new cc.p(object.x + 1, object.y);
-		var newReactangle = cc.rect(object.x, object.y, 48, 64);
-		if (!this.isCollisionInArray(newReactangle, this.obstacles)) {
+		var newRectangle = cc.rect(object.x - 72, object.y, 32, 32);
+		if (this.isCollisionInArray(newRectangle, this.obstacles)) {
+			console.log(newPosition);
 			object.setPosition(newPosition);
 		}
 	},
 	update:function () {
 		this.initX = this.initX + this.initPosition + 1;
 		var animationLayer = this.getParent().getChildByTag(TagOfLayer.Animation);
-		this.isCollision(animationLayer);
+		this.isCollision(animationLayer.sprite);
 		this.checkAndReload(animationLayer.x);
 	}
 });
